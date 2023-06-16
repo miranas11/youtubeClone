@@ -1,15 +1,23 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+    const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
+    if (!isMenuOpen) return null;
     return (
-        <div>
+        <div className="sidebar-container">
             <ul>
-                <li>Home</li>
+                <li>
+                    <Link to={"/"}> Home </Link>
+                </li>
+
                 <li>Sports</li>
                 <li>Gaming</li>
                 <li>Movies</li>
             </ul>
-            <h2>Subscriptions</h2>
+            <h3>Subscriptions</h3>
             <ul>
                 <li>Akshay Saini</li>
                 <li>PewdiePie</li>
@@ -17,7 +25,7 @@ const Sidebar = () => {
                 <li>IGN</li>
                 <li>Adult Swim</li>
             </ul>
-            <h2>Explore</h2>
+            <h3>Explore</h3>
             <ul>
                 <li>Trending</li>
                 <li>Shopping</li>
