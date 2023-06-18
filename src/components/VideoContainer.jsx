@@ -14,13 +14,12 @@ const VideoContainer = () => {
         const jsonData = await data.json();
         setVideos(jsonData.items);
     };
-    // console.log(videos[0].id.videoId);
 
     return (
         <div className="video-container">
             {videos.map((vid) => (
-                <Link to={"/watch?v=" + vid.id.videoId}>
-                    <VideoCard info={vid} key={vid.id.videoId} />
+                <Link key={vid.id.videoId} to={"/watch?v=" + vid.id.videoId}>
+                    <VideoCard info={vid} />
                 </Link>
             ))}
         </div>

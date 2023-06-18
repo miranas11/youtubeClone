@@ -1,14 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 a {
     text-decoration: none;
     color: inherit;
 }
 
 .head-container {
+    position: sticky;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px 40px;
+    padding: 10px 40px 10px 10px;
+
+    z-index: 9999;
+    background-color: white;
 }
 
 .head-container div img {
@@ -18,21 +30,49 @@ a {
 }
 
 .head-container div input {
-    padding: 15px;
+    font-size: 17px;
+    padding: 0 15px;
     border: 1px solid black;
-    width: 400px;
+    width: 600px;
+    height: 50px;
     border-radius: 25px 0 0 25px;
 }
 
 .head-container div button {
-    padding: 15px;
+    margin-right: 300px;
+    padding: 18px;
     border: 1px solid black;
     border-radius: 0 25px 25px 0;
+}
+
+.search-suggestions {
+    position: fixed;
+
+    z-index: 9999;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid grey;
+    margin: 2px 0;
+}
+
+.search-suggestions > ul {
+    list-style: none;
+    padding: 12px 0 3px 0px;
+    width: 630px;
+}
+
+.search-suggestions > ul > li {
+    padding: 10px 0 10px 20px;
+}
+
+.search-suggestions > ul > li:hover {
+    background: #f0f0f0;
 }
 
 .body-container {
     display: flex;
 }
+
 .sidebar-container {
     box-shadow: 2px 0 4px 5px rgba(0, 0, 0, 0.1);
     padding: 20px 35px 20px 10px;
@@ -61,10 +101,11 @@ li {
 
 .button-list {
     display: flex;
+    padding-bottom: 10px;
 }
 
 .button {
-    margin: 10px 20px 10px 0;
+    margin: 0px 20px 20px 0;
     padding: 10px 25px;
     border-radius: 10px;
     font-size: 15px;
@@ -72,6 +113,7 @@ li {
 
 .video-container {
     display: flex;
+
     flex-wrap: wrap;
     pointer-events: none;
     align-items: flex-start;
@@ -82,9 +124,136 @@ li {
     pointer-events: auto;
     display: flex;
     flex-direction: column;
-    margin: 10px 40px;
-    padding: 30px 10px;
-    border: 1px solid;
-    width: 350px;
-    height: 280px;
+    margin: 10px 15px;
+    padding: 0px 0px 20px 0px;
+    width: 320px;
+    height: 290px;
+    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+}
+
+.video-card div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    padding: 20px;
+}
+
+.video-card img {
+    border-radius: 8px;
+}
+
+.watch-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+}
+
+.watch-card {
+    border-radius: 10px;
+    padding: 0px;
+    margin: 10px 0;
+}
+
+.watch-top-half {
+    display: flex;
+}
+
+.chat-section {
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 10px;
+    margin: 10px 0 10px 30px;
+    padding: 0 0px;
+    width: 100%;
+    max-height: 650px;
+    border: 1px solid black;
+    overflow-y: auto;
+}
+.chat-send {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid black;
+    padding: 10px 50px 30px 50px;
+}
+
+.chat-send div {
+    display: flex;
+    align-items: center;
+}
+
+.chat-send input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+}
+
+.chat-send input:focus {
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #1a507a;
+}
+
+.chat-send input,
+button {
+    padding: 5px;
+}
+
+.chat-container {
+    flex-grow: 1; /* Allow child1 to expand and fill remaining space */
+    overflow-y: auto;
+}
+.chat-card {
+    display: flex;
+    align-items: center;
+}
+
+.chat-card span {
+    margin-right: 20px;
+}
+
+.chat-card :nth-child(2) {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.comment-box {
+    border-radius: 10px 0 0 10px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: row;
+    /* box-shadow: -2px 2px 2px 3px rgba(0, 0, 0, 0.06); */
+
+    /* margin: 5px; */
+}
+.logo-image {
+    width: 70px;
+}
+
+.comment-box div {
+    margin: 15px 0 0 0;
+}
+
+.comment-box div p {
+    padding: 2px 0;
+}
+
+.comment-box :first-child {
+    font-weight: 800;
+}
+
+.comment-replies {
+    margin-left: 70px;
+    margin-top: 3px;
+    border-left: 1px solid gray;
 }

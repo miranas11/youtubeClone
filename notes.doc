@@ -1,0 +1,53 @@
+#HIGHER ORDER COMPONENTS
+    -In simple terms, a Higher-Order Component is a function that takes a component as an input and returns a new component with additional props or behavior.
+    -This pattern enables code reuse, abstraction of logic, and the ability to modify the behavior of multiple components at once.
+    -HOCs are commonly used for tasks such as handling authentication, managing state, or adding additional props or functions to a component. They help in separating concerns and creating reusable and composable components in React applications.
+
+    e.g
+
+    const RedBorderVideoCard=({info})=>{
+        return <div className="redborderContainer>
+                    <VideoCard info={info}/>
+                </div>
+    }
+
+    how to use
+    <RedBorderVideoCard info={videos[0]}/>
+
+
+#Debouncing
+    -Debouncing is a technique used in programming to limit the frequency of a function call. It is particularly useful in scenarios where a function is triggered rapidly or frequently, such as user input events like keystrokes or scroll events.
+    -Debouncing is commonly used in scenarios like search bars, where you want to delay making API requests until the user has finished typing. By debouncing the search function, you ensure that the API request is triggered only after the user has paused typing, reducing the number of unnecessary requests and improving performance.
+
+    -Deboucnng with 200ms
+        -if diff b/w typing is less than 200ms skip api call
+            else make api call
+
+    -How to make deboucing for search
+            use UseEffect
+            useEffect(() => {
+                const timer = setTimeout(() => getSearchSuggestions(), 200);
+
+                //cancels the api if componet rerenders
+                return () => {
+                    clearTimeout(timer);
+                };
+            }, [searchQuery]);
+
+    -so now setTimeout will be called and set a timeout for 200ms .if we type another alphabet before 200 ms the searchQuey which is depepenecy in 
+    UseEffect will change ->the component re renders and the return is called so the timer get reset and api never gets called
+
+
+    #Suppose you wanted to build somethign like live chat that is live data and conituously updates
+        -2 ways
+
+            -WEBSOCKETS(WHATSAPP)
+                -its a 2way connections 
+                -bidirectional
+                -2 way handshake between server and user 
+                -no interval
+                -suppose there is new data in sever server will send notificatin to ui and ui will update it
+
+            -API Polling(CRICCBUZZ,GMAIL)
+                -ui request server and data flows for server after interval
+                -let me check after some interval if data has come to server
